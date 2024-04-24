@@ -1,0 +1,54 @@
+body {
+    font-family: Arial, sans-serif;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    animation: slideIn 0.5s ease-in-out;
+}
+
+h1 {
+    text-align: center;
+    animation: slideIn 0.5s ease-in-out;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    animation: slideIn 0.5s ease-in-out;
+}
+
+li {
+    margin-bottom: 10px;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+input[type="text"], input[type="submit"] {
+    padding: 8px;
+    width: 100%;
+    margin-bottom: 10px;
+    animation: slideIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
