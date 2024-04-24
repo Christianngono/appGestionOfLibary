@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const optionForm = document.getElementById('optionForm');
     const inputFields = document.getElementById('inputFields');
     const output = document.getElementById('output');
+    let allResults = []; // Liste pour stocker tous les resultats
 
     optionForm.addEventListener('submit', function(event) {
         event.preventDefault();
@@ -45,4 +46,12 @@ document.addEventListener('DOMContentLoaded', function() {
             inputFields.innerHTML = '';
         }
     });
+    function displayAllResults() {
+        let html = '';
+        allResults.forEach((result, index) => {
+            html += `<p><strong>Option ${index + 1}: ${result.option}</strong></p>`;
+            html += `<pre>${JSON.stringify(result.result, null, 2)}</pre>`;
+        });
+        output.innerHTML = html;
+    }
 });
