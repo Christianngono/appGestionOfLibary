@@ -1,8 +1,9 @@
 const express = require('express');
+const app = express();
 const path = require('path');
 
-const app = express();
-const port = 3000;
+// Configuration du moteur de modèle EJS
+app.set('view engine', 'ejs');
 
 // Tableau de livres
 let books = [ 
@@ -27,33 +28,25 @@ let books = [
     { title:"Book 19", author:"Author 19", genre:"Psychologie", borrowed: true, dueDate: "2024-04-09" },
 ];
 
-// Analyse le corps des requêtes au format JSON
-app.use(express.json());
 
-app.set("view engine", "ejs");
 
-// Middleware pour servir les fichiers static
+// Middleware pour servir les fichiers statiques (CSS, JavaScript, etc)
 app.use('/static', express.static(path.join(__dirname, 'public', 'static')));
 
-app.get('/', (req, res) => {
-    res.render('index');
+app.get('/', function(req, res) {
+    // Rendre la vue index.ejs et passer les données des livres à la vue
+    res.render('index', { books: books, request: req});
 });
 
-
-// Route pour ajouter un livre dans la collection
-app.post('/api/books/', (req, res) => {
-    // Traitement pour ajouter un livre à la collection
-    const newBook = req.body;// Le nouveau livre est dans req.body
-    // Ajouter le nouveau livre à la collection
-    books.push(newBook) 
-    res.json({option: 'addBook', result: newBook});
+// Route pour obtenir la liste complète des livres
+app.get('/api/books/getBooks', (req, res) => {
+    res.json({option: 'getBooks', result: books, request: req});
 });
 
 // Route pour trier la collection de livres par titre
 app.get('/api/books/sort', (req, res) => {
-        const sortedBooks = [...books].sort((a, b) => a.title.localeCompare(b.title));
-
-    res.json({option: 'sortBooks', result: sortedBooks});
+    const sortedBooks = [...books].sort((a, b) => a.title.localeCompare(b.title));
+    res.json({option: 'sortBooks', result: sortedBooks, request: req});
 });
 
 // Route pour supprimer un livre de la collection
@@ -125,6 +118,7 @@ app.get('/api/books/search/genre/:genre', (req, res) => {
 
 
 // Lancement du serveur
-app.listen(port, () => {
+const port = process.env.PORT || 3000;
+app.listen(port, function() {
     console.log(`Server listening at http://localhost:${port}`);
 });
