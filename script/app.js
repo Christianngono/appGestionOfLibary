@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const optionForm = document.getElementById('optionForm');
     const inputFields = document.getElementById('inputFields');
-    const output = document.getElementById('output');
     let allResults = []; // Liste pour stocker tous les resultats
 
     optionForm.addEventListener('submit', function(event) {
@@ -12,8 +11,8 @@ document.addEventListener('DOMContentLoaded', function() {
         formData.forEach((value, key) => {
             requestData[key] = value;
         });
-        fetch('/api/' + selectedOption, {
-            method: 'POST',
+        fetch('/api/books/' + selectedOption, {
+            method: selectedOption === 'sort' ? 'GET' : 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -21,7 +20,9 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(response => response.json())
         .then(data => {
-            output.innerHTML = JSON.stringify(data, null, 2);
+            allResults.push(data);
+            displayResult(data);
+
         })
         .catch(error => console.error('Error:', error));
     });
@@ -37,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <label for="genre">Genre :</label>
                 <input type="text" id="genre" name="genre">
             `;
-        } else if (selectedOption === 'searchBook' || selectedOption === 'searchBookByAuthor' || selectedOption === 'searchBookByGenre') {
+        } else if (selectedOption === 'searchBookByTitle' || selectedOption === 'searchBookByAuthor' || selectedOption === 'searchBookByGenre') {
             inputFields.innerHTML = `
                 <label for="query">Recherche :</label>
                 <input type="text" id="query" name="query">
@@ -46,12 +47,10 @@ document.addEventListener('DOMContentLoaded', function() {
             inputFields.innerHTML = '';
         }
     });
-    function displayAllResults() {
-        let html = '';
-        allResults.forEach((result, index) => {
-            html += `<p><strong>Option ${index + 1}: ${result.option}</strong></p>`;
-            html += `<pre>${JSON.stringify(result.result, null, 2)}</pre>`;
-        });
-        output.innerHTML = html;
+    function displayResult(data) {
+        const output = document.getElementById('output');
+        const resultDiv = document.createElement('div');
+        resultDiv.testContent = JSON.stringify(data, null, 2);
+        output.appendChild(resultDiv); 
     }
 });
