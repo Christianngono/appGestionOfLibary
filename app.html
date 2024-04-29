@@ -1,0 +1,36 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System</title>
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Library Management System</h1>
+        <form id="optionForm">
+            <label for="option">Options :</label>
+            <select id="option">
+                <option value="getBooks">Afficher la collection de livres</option>
+                <option value="sortBooks">Trier la collection de livres par titre</option>
+                <option value="addBook">Ajouter un nouveau livre</option>
+                <option value="removeBook">Supprimer un livre de la collection</option>
+                <option value="returnBook">Rendre un livre</option>
+                <option value="borrowBook">Emprunter un livre</option>
+                <option value="getBorrowedBooks">Afficher les livres empruntés</option>
+                <option value="getOverdueBooks">Afficher les livres en retard</option>
+                <option value="getAvailableBooks">Afficher les livres disponibles</option>
+                <option value="searchBook">Rechercher un livre par titre</option>
+                <option value="searchBookByAuthor">Rechercher des livres par auteur</option>
+                <option value="searchBookByGenre">Rechercher des livres par genre</option>
+            </select>
+            <div id="inputFields"></div>
+            <input type="submit" value="Exécuter">
+        </form>
+        <button onclick="displayAllResults()">Afficher tous les résultats</button>
+        <div id="output"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
