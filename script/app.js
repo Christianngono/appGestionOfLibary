@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
             requestData[key] = value;
         });
         fetch('/api/books/' + selectedOption, {
-            method: selectedOption === 'sort' ? 'GET' : 'POST',
+            method: selectedOption === 'sortBooks' ? 'GET' : 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -22,21 +22,20 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(data => {
             allResults.push(data);
             displayResult(data);
-
         })
         .catch(error => console.error('Error:', error));
     });
 
-    document.getElementById('option').addEventListener('change', function(event) {
+    document.getElementById('optionSelect').addEventListener('change', function(event) {
         const selectedOption = event.target.value;
         if (selectedOption === 'addBook' || selectedOption === 'removeBook' || selectedOption === 'returnBook' || selectedOption === 'borrowBook') {
             inputFields.innerHTML = `
-                <label for="title">Titre :</label>
-                <input type="text" id="title" name="title">
-                <label for="author">Auteur :</label>
-                <input type="text" id="author" name="author">
-                <label for="genre">Genre :</label>
-                <input type="text" id="genre" name="genre">
+                <label for="inputTitle">Titre :</label>
+                <input type="text" id="inputTitle" name="title">
+                <label for="inputAuthor">Auteur :</label>
+                <input type="text" id="inputAuthor" name="author">
+                <label for="inputGenre">Genre :</label>
+                <input type="text" id="inputGenre" name="genre">
             `;
         } else if (selectedOption === 'searchBookByTitle' || selectedOption === 'searchBookByAuthor' || selectedOption === 'searchBookByGenre') {
             inputFields.innerHTML = `
@@ -46,11 +45,28 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             inputFields.innerHTML = '';
         }
+        inputFields.classList.toggle('hidden', selectedOption === 'getBooks' || selectedOption === 'getBorrowedBooks' || selectedOption === 'getOverdueBooks' || selectedOption === 'getAvailableBooks');
     });
+
     function displayResult(data) {
         const output = document.getElementById('output');
         const resultDiv = document.createElement('div');
-        resultDiv.testContent = JSON.stringify(data, null, 2);
-        output.appendChild(resultDiv); 
+        resultDiv.textContent = JSON.stringify(data, null, 2);
+        output.appendChild(resultDiv);
     }
+
+    function displayAllResults() {
+        const output = document.getElementById('output');
+        output.innerHTML = '';
+        allResults.forEach(result => {
+            const resultDiv = document.createElement('div');
+            resultDiv.textContent = JSON.stringify(result, null, 2);
+            output.appendChild(resultDiv);
+        });
+        allResults = [];
+    }
+
+    document.getElementById('displayAllResults').addEventListener('click', function() {
+        displayAllResults();
+    });
 });
