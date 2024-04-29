@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 
 const app = express();
 const port = 3000;
@@ -30,6 +31,9 @@ let books = [
 app.use(express.json());
 
 app.set("view engine", "ejs");
+
+// Middleware pour servir les fichiers static
+app.use('/static', express.static(path.join(__dirname, 'public', 'static')));
 
 app.get('/', (req, res) => {
     res.render('index');
