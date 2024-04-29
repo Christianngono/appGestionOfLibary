@@ -25,18 +25,24 @@
                 <option value="searchBookByAuthor">Rechercher des livres par auteur</option>
                 <option value="searchBookByGenre">Rechercher des livres par genre</option>
             </select>
+            <!--Champ pour entrer les détails du livre--->
             <div id="inputFields" class="hidden">
-                <!---Le contenu du formulaire sera ajouté ici par JavaScript-->
                 <label for="title">Titre :</label>
-                <input type="text" id="title" name="title">
+                <input type="text" id="title" name="title" required>
                 <label for="author">Auteur :</label>
-                <input type="text" id="author" name="author">
+                <input type="text" id="author" name="author" required>
                 <label for="genre">Genre :</label>
-                <input type="text" id="genre" name="genre">   
-            </div>
+                <input type="text" id="genre" name="genre" required>
+                <label for="borrower">Emprunteur :</label>
+                <input type="text" id="borrower" name="borrower" required>
+                <label for="borrowDate">Date d'emprunt :</label>
+                <input type="date" id="borrowDate" name="borrowDate" required>
+                <label for="returnDate">Date de retour :</label>
+                <input type="date" id="returnDate" name="returnDate" required>
+            </div> 
             <input type="submit" value="Exécuter">
         </form>
-        <button onclick="displayAllResults()">Afficher tous les résultats</button>
+        <button onclick="displayAllResultsBtn" class="hidden">Afficher tous les résultats</button>
         <div id="output"></div>
     </div>
     <script src="/script/app.js"></script>
