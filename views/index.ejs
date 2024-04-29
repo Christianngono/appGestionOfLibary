@@ -25,26 +25,21 @@
                 <option value="searchBookByAuthor">Rechercher des livres par auteur</option>
                 <option value="searchBookByGenre">Rechercher des livres par genre</option>
             </select>
-            <div id="inputFields"></div>
+            <div id="inputFields" class="hidden">
+                <!---Le contenu du formulaire sera ajouté ici par JavaScript-->
+                <label for="title">Titre :</label>
+                <input type="text" id="title" name="title">
+                <label for="author">Auteur :</label>
+                <input type="text" id="author" name="author">
+                <label for="genre">Genre :</label>
+                <input type="text" id="genre" name="genre">   
+            </div>
             <input type="submit" value="Exécuter">
         </form>
         <button onclick="displayAllResults()">Afficher tous les résultats</button>
         <div id="output"></div>
     </div>
-
     <script src="/script/app.js"></script>
-    <script>
-        function displayAllResults() {
-            const output = document.getElementById("output");
-            // Effacer les résultats précédents
-            output.innerHTML = ""; 
-            // Parcourir tous les résultats et afficher chaque résulta
-            allResults.forEach(result => {
-                const resultDiv = document.createElement("div");
-                resultDiv.textContent = JSON.stringify(result, null, 2);
-                output.appendChild(resultDiv);
-            });
-        }
     </script>
 </body>
 </html>
