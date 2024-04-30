@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rendre un livre</title>
+    <link rel="stylesheet" href="../static/returnBook.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Rendre un livre</h1>
+        <form id="returnBookForm" action="/api/books/returnBook" method="PUT">
+            <label for="title">Titre :</label>
+            <input type="text" id="title" name="title" required>
+            <input type="submit" value="Rendre">
+        </form>
+    </div>
+</body>
+</html>
