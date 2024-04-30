@@ -3,6 +3,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const output = document.getElementById('output');
     const displayAllResultsBtn = document.querySelector('button');
 
+    // Charger les données des livres lors du chargement de la page
+    fetch('/api/books/getBooks')
+        .then(response => response.json())
+        .then(data => {
+            displayAllResults(data);
+        })
+        .catch(error => console.error('Error:', error));
+
     optionForm.addEventListener('submit', function(event) {
         event.preventDefault();
         const selectedOption = document.getElementById('option').value;
@@ -11,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
         formData.forEach((value, key) => {
             requestData[key] = value;
         });
-        fetch('/api/books/' + selectedOption, {
+        fetch(`/api/books/${selectedOption}`, {
             method: selectedOption === 'sortBooks' ? 'GET' : 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -42,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     function displayResult(data) {
-        output.innerHTML = ''; //  Clear previous result 
+        output.innerHTML = ''; // Clear previous result 
         const resultDiv = document.createElement('div');
         resultDiv.textContent = JSON.stringify(data, null, 2);
         output.appendChild(resultDiv);
