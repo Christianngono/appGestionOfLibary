@@ -1,0 +1,16 @@
+.container {
+    text-align: center;
+    background-color: #fff;
+    padding: 50px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #dc3545;
+}
+
+p {
+    margin-top: 20px;
+    color: #888;
+}
