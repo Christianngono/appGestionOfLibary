@@ -9,6 +9,9 @@ app.set('view engine', 'ejs');
 // Middleware pour servir les fichiers statiques (CSS, JavaScript, etc)
 app.use('/static', express.static(path.join(__dirname, 'public', 'static')));
 
+// Chemin absolu vers le fichier booksData.json
+const booksDataPath = path.join(__dirname, 'booksData.json');
+
 // Route pour la page d'accueil
 app.get('/', function(req, res) {
     res.render('index', { books: booksData, page: 'Accueil', request: req });
@@ -19,14 +22,27 @@ app.get('/addBook', function(req, res) {
     res.render('addBook', { books: booksData, page: 'Ajouter un livre', request: req });
 });
 
-// Route pour la page de détails du livre
-app.get('/bookDetails', function(req, res) {
-    res.render('bookDetails', { books: booksData, page: 'Détails du livre', request: req });
+// Route pour afficher les détails d'un livre
+app.get('/book/: id', function(req, res) {
+    const bookId = parseInt(req.params.id);
+    const book = booksData.find(book => book.id === bookId);
+    if (!book) {
+        res.status(404).send('Livre non trouvé.');
+    } else {
+        res.render('bookDetails', { book, page: 'Détails du livre', request: req });
+    }       
 });
 
+
 // Route pour la page d'emprunt de livre
-app.get('/borrowBook', function(req, res) {
-    res.render('borrowBook', { books: booksData, page: 'Emprunter un livre', request: req });
+app.get('/book/:id/borrow', function(req, res) {
+    const bookId = parseInt(req.params.id);
+    const book = booksData.find(book => book.id === bookId);
+    if (!book) {
+        res.status(404).send('Livre non trouvé.');
+    } else {
+        res.render('borrowBook', { book, page: 'Emprunter un livre', request: req });
+    }   
 });
 
 // Route pour la page de retour de livre
