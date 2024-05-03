@@ -9,8 +9,6 @@ app.set('view engine', 'ejs');
 // Middleware pour servir les fichiers statiques (CSS, JavaScript, etc)
 app.use('/static', express.static(path.join(__dirname, 'public', 'static')));
 
-// Chemin absolu vers le fichier booksData.json
-const booksDataPath = path.join(__dirname, 'booksData.json');
 
 // Route pour la page d'accueil
 app.get('/', function(req, res) {
