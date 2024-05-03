@@ -196,3 +196,7 @@ while (true) {
             console.log("Option invalide.");
     }
 }
+
+app.listen(3000, () => {
+    console.log('Le serveur écoute sur le port 3000');
+});

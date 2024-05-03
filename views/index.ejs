@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library Management System</title>
-    <link rel="stylesheet" href="../static/app.css">
+    <link rel="stylesheet" href="app.css">
 </head>
 <body>
     <div class="container">
@@ -65,6 +65,22 @@
         <div id="output"></div>
     </div>
     <script src="/script/app.js"></script>
+    <script>
+        function displayAllResults() {
+            const output = document.getElementById("output");
+            // Effacer les résultats précédents
+            output.innerHTML = ""; 
+            // Parcourir tous les résultats et afficher chaque résultat
+            allResults.forEach(result => {
+                const resultDiv = document.createElement("div");
+                resultDiv.textContent = JSON.stringify(result, null, 2);
+                output.appendChild(resultDiv);
+            });
+
+            app.listen(3000, () => {
+    console.log('Le serveur écoute sur le port 3000');
+});
+        }
     </script>
 </body>
 </html>
