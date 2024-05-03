@@ -3,21 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajouter un nouveau livre</title>
-    <link rel="stylesheet" href="../static/addBook.css">
+    <title>Add New Book</title>
+    <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Ajouter un nouveau livre</h1>
-        <form id="addBookForm" action="/api/books/addBook" method="POST">
-            <label for="title">Titre :</label>
-            <input type="text" id="title" name="title" required>
-            <label for="author">Auteur :</label>
-            <input type="text" id="author" name="author" required>
-            <label for="genre">Genre :</label>
-            <input type="text" id="genre" name="genre" required>
-            <input type="submit" value="Ajouter">
-        </form>
-    </div>
+    <h1>Add New Book</h1>
+    <!--Formulaire pour ajouter un livre-->
+    <a href="/">Back to Home</a>
+    <form action="/addBook" method="POST">
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title">
+        <label for="author">Author</label>
+        <input type="text" name="author" id="author">
+        <label for="genre">Genre</label>
+        <input type="text" name="genre" id="genre">
+        <input type="submit" value="Add Book">
+    </form>
+    <a href="/">Back to Home</a>
+    <a href="/book/<%= book.id %>">Back to Book Details</a>    
 </body>
 </html>

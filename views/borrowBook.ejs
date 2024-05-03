@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emprunter un livre</title>
-    <link rel="stylesheet" href="../static/borrowBook.css">
+    <title>Emprunter un Livre</title>
+    <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Emprunter un livre</h1>
-        <form id="borrowBookForm" action="/api/books/borrowBook" method="PUT">
-            <label for="title">Titre :</label>
-            <input type="text" id="title" name="title" required>
-            <label for="dueDate">Date de retour :</label>
-            <input type="date" id="dueDate" name="dueDate" required>
-            <input type="submit" value="Emprunter">
-        </form>
-    </div>
+    <h1>Emprunter un Livre</h1>
+    <!-- Formulaire pour emprunter un livre -->
+    <a href="/">Back to Home</a>
+    <form action="/borrowBook" method="POST">
+        <label for="bookId">Book ID</label>
+        <input type="text" name="bookId" id="bookId">
+        <input type="submit" value="Borrow Book">
+    </form>
+    <a href="/">Back to Home</a>
+    <a href="/book/<%= book.id %>">Back to Book Details</a>
 </body>
 </html>

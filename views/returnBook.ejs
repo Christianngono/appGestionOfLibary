@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rendre un livre</title>
-    <link rel="stylesheet" href="../static/returnBook.css">
+    <title>Rendre un Livre</title>
+    <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Rendre un livre</h1>
-        <form id="returnBookForm" action="/api/books/returnBook" method="PUT">
-            <label for="title">Titre :</label>
-            <input type="text" id="title" name="title" required>
-            <input type="submit" value="Rendre">
-        </form>
-    </div>
+    <h1>Rendre un Livre</h1>
+    <!-- Formulaire pour rendre un livre -->
+    <a href="/">Back to Home</a>
+    <form action="/returnBook" method="POST">
+        <label for="bookId">Book ID</label>
+        <input type="text" name="bookId" id="bookId">
+        <input type="submit" value="Return Book">
+    </form>
+    <a href="/">Back to Home</a>
+    <a href="/book/<%= book.id %>">Back to Book Details</a>
 </body>
 </html>
