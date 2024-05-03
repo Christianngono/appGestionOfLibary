@@ -9,7 +9,6 @@ app.set('view engine', 'ejs');
 // Middleware pour servir les fichiers statiques (CSS, JavaScript, etc)
 app.use('/static', express.static(path.join(__dirname, 'public', 'static')));
 
-
 // Route pour la page d'accueil
 app.get('/', function(req, res) {
     res.render('index', { books: booksData, page: 'Accueil', request: req });
@@ -21,16 +20,15 @@ app.get('/addBook', function(req, res) {
 });
 
 // Route pour afficher les détails d'un livre
-app.get('/book/: id', function(req, res) {
+app.get('/book/:id', function(req, res) {
     const bookId = parseInt(req.params.id);
     const book = booksData.find(book => book.id === bookId);
     if (!book) {
         res.status(404).send('Livre non trouvé.');
     } else {
         res.render('bookDetails', { book, page: 'Détails du livre', request: req });
-    }       
+    }
 });
-
 
 // Route pour la page d'emprunt de livre
 app.get('/book/:id/borrow', function(req, res) {
@@ -40,7 +38,7 @@ app.get('/book/:id/borrow', function(req, res) {
         res.status(404).send('Livre non trouvé.');
     } else {
         res.render('borrowBook', { book, page: 'Emprunter un livre', request: req });
-    }   
+    }
 });
 
 // Route pour la page de retour de livre
