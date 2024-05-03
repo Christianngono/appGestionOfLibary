@@ -20,6 +20,8 @@
         <input type="submit" value="Add Book">
     </form>
     <a href="/">Back to Home</a>
-    <a href="/book/<%= book.id %>">Back to Book Details</a>    
+    <% if (typeof book !== 'undefined') { %>
+        <a href="/book/<%= book.id %>">Back to Book Details</a>
+    <% } %>    
 </body>
 </html>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library Management System - Home</title>
-    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="stylesheet" href="/static/index.css">
 </head>
 <body>
     <h1>Library Management System</h1>
@@ -14,6 +14,9 @@
             <li><a href="/book/<%= book.id %>"><%= book.title %></a></li>
         <% }); %>
     </ul>
-    <a href="/addBook">Add New Book</a>    
+    <a href="/addBook">Add New Book</a>
+    <a href="/search">Search Books</a>
+    <a href="/borrowBook">Borrow a Book</a>
+    <a href="/returnBook">Return a Book</a>    
 </body>
 </html>
