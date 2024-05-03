@@ -2,12 +2,23 @@ document.addEventListener('DOMContentLoaded', function() {
     const optionForm = document.getElementById('optionForm');
     const output = document.getElementById('output');
     const displayAllResultsBtn = document.querySelector('button');
+    const API_URL = '/api/books/getBooks'; // URL de l'API pour récupérer les livres
+
+    // Variable pour stocker l'option sélectionnée
+    let selectedOption;
 
     // Charger les données des livres lors du chargement de la page
-    fetch('/api/books/getBooks')
+    fetch(API_URL)
         .then(response => response.json())
         .then(data => {
-            displayAllResults(data);
+            // Traitement des données retournées
+            displayResult(data);
+            // Si l'option sélectionnée est "getBooks", afficher le bouton pour afficher tous les résultats
+            if (selectedOption === 'getBooks') {
+                displayAllResultsBtn.classList.remove('hidden');
+            } else {
+                displayAllResultsBtn.classList.add('hidden');
+            }
         })
         .catch(error => console.error('Error:', error));
 
@@ -41,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Écouter les clics sur le bouton "Afficher tous les résultats"
     displayAllResultsBtn.addEventListener('click', function () {
-        fetch('/api/books/getBooks')
+        fetch(API_URL)
             .then(response => response.json())
             .then(data => {
                 displayAllResults(data);
@@ -51,15 +62,24 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function displayResult(data) {
         output.innerHTML = ''; // Clear previous result 
-        const resultDiv = document.createElement('div');
-        resultDiv.textContent = JSON.stringify(data, null, 2);
-        output.appendChild(resultDiv);
+        // Boucle sur les données et affichage approprié
+        data.forEach(book => {
+          output.innerHTML += `<div>${book.id} - ${book.title}</div>`;
+          output.innerHTML += `<div>${book.author}</div>`;
+          output.innerHTML += `<div>${book.genre}</div>`;
+          output.innerHTML += `<div>${book.borrowed}</div>`;
+          output.innerHTML += `<div>${book.dueDate}</div>`;
+        });
     }
 
     function displayAllResults(data) {
         output.innerHTML = '';
-        const resultDiv = document.createElement('div');
-        resultDiv.textContent = JSON.stringify(data, null, 2);
-        output.appendChild(resultDiv);   
+        data.forEach(book => {
+            output.innerHTML += `<div>${book.id} - ${book.title}</div>`;
+            output.innerHTML += `<div>${book.author}</div>`;
+            output.innerHTML += `<div>${book.genre}</div>`;
+            output.innerHTML += `<div>${book.borrowed}</div>`;
+            output.innerHTML += `<div>${book.dueDate}</div>`;
+        });
     }
 });
