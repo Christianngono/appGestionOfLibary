@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter un nouveau livre</title>
+    <link rel="stylesheet" href="../static/addBook.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Ajouter un nouveau livre</h1>
+        <form id="addBookForm" action="/api/books/addBook" method="POST">
+            <label for="title">Titre :</label>
+            <input type="text" id="title" name="title" required>
+            <label for="author">Auteur :</label>
+            <input type="text" id="author" name="author" required>
+            <label for="genre">Genre :</label>
+            <input type="text" id="genre" name="genre" required>
+            <input type="submit" value="Ajouter">
+        </form>
+    </div>
+</body>
+</html>

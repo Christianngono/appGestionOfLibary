@@ -9,25 +9,6 @@
 <body>
     <div class="container">
         <h1>Library Management System</h1>
-        <div>
-            <h2>Liste des livres disponibles :</h2>
-            <ul>
-                <% books.forEach(book => { %>
-                    <li>
-                        <strong>Titre :</strong> <%= book.title %><br>
-                        <strong>Auteur :</strong> <%= book.author %><br>
-                        <strong>Genre :</strong> <%= book.genre %><br>
-                        <% if (book.borrowed) { %>
-                            <strong>Emprunté :</strong> Oui<br>
-                            <strong>Date d'emprunt :</strong> <%= book.borrowDate %><br>
-                            <strong>Date de retour :</strong> <%= book.returnDate %><br>
-                        <% } else { %>
-                            <strong>Emprunté :</strong> Non<br>
-                        <% } %>
-                    </li>
-                <% }) %>
-            </ul>
-        </div>
         <form id="optionForm" action="/">
             <label for="option">Options :</label>
             <select id="option">

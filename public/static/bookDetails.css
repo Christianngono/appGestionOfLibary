@@ -1,0 +1,12 @@
+.container {
+    text-align: center;
+}
+
+strong {
+    font-weight: bold;
+    color: #007bff;
+}
+
+div {
+    margin-top: 20px;
+}

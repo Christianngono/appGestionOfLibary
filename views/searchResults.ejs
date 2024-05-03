@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Résultats de la recherche</title>
+    <link rel="stylesheet" href="../static/searchResult.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Résultats de la recherche</h1>
+        <div>
+            <% if (results.length > 0) { %>
+                <ul>
+                    <% results.forEach(book => { %>
+                        <li>
+                            <strong>Titre :</strong> <%= book.title %><br>
+                            <strong>Auteur :</strong> <%= book.author %><br>
+                            <strong>Genre :</strong> <%= book.genre %><br>
+                        </li>
+                    <% }) %>
+                </ul>
+            <% } else { %>
+                <p>Aucun résultat trouvé.</p>
+            <% } %>
+        </div>
+    </div>
+</body>
+</html>

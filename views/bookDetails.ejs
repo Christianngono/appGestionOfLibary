@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détails du livre</title>
+    <link rel="stylesheet" href="../static/bookDetails.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Détails du livre</h1>
+        <div>
+            <strong>Titre :</strong> <%= book.title %><br>
+            <strong>Auteur :</strong> <%= book.author %><br>
+            <strong>Genre :</strong> <%= book.genre %><br>
+            <% if (book.borrowed) { %>
+                <strong>Emprunté :</strong> Oui<br>
+                <strong>Date d'emprunt :</strong> <%= book.borrowDate %><br>
+                <strong>Date de retour :</strong> <%= book.returnDate %><br>
+            <% } else { %>
+                <strong>Emprunté :</strong> Non<br>
+            <% } %>
+        </div>
+    </div>
+</body>
+</html>
