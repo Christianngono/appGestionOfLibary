@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supprimer un livre</title>
+    <link rel="stylesheet" href="/public/static/deleteBook.css">
+</head>
+<body>
+    <h1>Supprimer un livre</h1>
+    <!--Formulaire de suppession-->
+    <form action="/deleteBook" method="POST">
+        <label for="bookId">ID du livre à supprimer:</label>
+        <input type="number" id="bookId" name="bookId" required><br>
+        <button type="submit">Supprimer</button>
+    </form>
+    <a href="/">Retour à l'accueil</a>
+</body>
+</html>

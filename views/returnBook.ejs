@@ -3,19 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rendre un Livre</title>
-    <link rel="stylesheet" href="/static/returnBook.css">
+    <title>Retourner un livre</title>
+    <link rel="stylesheet" href="../public/static/returnBook.css">
 </head>
 <body>
-    <h1>Rendre un Livre</h1>
-    <!-- Formulaire pour rendre un livre -->
-    <a href="/">Back to Home</a>
+    <h1>Retourner un livre</h1>
     <form action="/returnBook" method="POST">
-        <label for="bookId">Book ID</label>
-        <input type="text" name="bookId" id="bookId">
-        <input type="submit" value="Return Book">
+        <label for="bookId">ID du livre à retourner:</label>
+        <input type="number" id="bookId" name="bookId" required><br>
+        <button type="submit">Retourner</button>
     </form>
-    <a href="/">Back to Home</a>
-    <a href="/book/<%= book.id %>">Back to Book Details</a>
+    <a href="/">Retour à l'accueil</a>
 </body>
 </html>

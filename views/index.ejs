@@ -3,20 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Library Management System - Home</title>
-    <link rel="stylesheet" href="/static/index.css">
+    <title>Accueil</title>
+    <link rel="stylesheet" href="/public/static/index.css">
 </head>
 <body>
-    <h1>Library Management System</h1>
-    <h2>List of Books</h2>
-    <ul>
+    <h1><%= page %></h1>
+
+    <div id="books">
         <% books.forEach(book => { %>
-            <li><a href="/book/<%= book.id %>"><%= book.title %></a></li>
+            <div class="book">
+                <h2><%= book.title %></h2>
+                <p>Auteur: <%= book.author %></p>
+                <p>Genre: <%= book.genre %></p>
+                <p><%= book.borrowed ? 'Emprunté' : 'Disponible' %></p>
+                <p>Date d'échéance: <%= book.dueDate %></p>
+            </div>
         <% }); %>
-    </ul>
-    <a href="/addBook">Add New Book</a>
-    <a href="/search">Search Books</a>
-    <a href="/borrowBook">Borrow a Book</a>
-    <a href="/returnBook">Return a Book</a>    
+    </div>
+
+    <div class="actions">
+        <a href="/addBook">Ajouter un livre</a>
+        <a href="/deleteBook">Supprimer un livre</a>
+        <a href="/borrowBook">Emprunter un livre</a>
+        <a href="/returnBook">Retourner un livre</a>
+    </div>
 </body>
 </html>

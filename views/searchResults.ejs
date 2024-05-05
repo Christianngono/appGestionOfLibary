@@ -3,19 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Résultats de Recherche</title>
-    <link rel="stylesheet" href="/static/searchResults.css">
+    <title>Résultats de recherche</title>
+    <link rel="stylesheet" href="/public/static/searchResults.css">
 </head>
 <body>
-    <h1>Résultats de Recherche</h1>
-    <!-- Affichage des résultats de recherche -->
-    <a href="/">Back to Home</a>
-    <ul>
-        <% books.forEach(book => { %>
-            <li><a href="/book/<%= book.id %>"><%= book.title %></a></li>
-        <% }); %>
-    </ul>
-    <a href="/">Back to Home</a>
-    <a href="/book/<%= book.id %>">Back to Book Details</a>   
+    <h1>Résultats de recherche</h1>
+    <h2>Livres ajoutés</h2>
+    <% addedBook.forEach(book => { %>
+        <div>
+            <h3><%= book.title %></h3>
+            <p>Auteur: <%= book.author %></p>
+            <p>Genre: <%= book.genre %></p>
+            <p><%= book.borrowed ? 'Emprunté' : 'Disponible' %></p>
+            <% if (book.borrowed) { %>
+                <p>Date de retour: <%= book.dueDate %></p>
+            <% } %>
+        </div>
+    <% }); %>
+
+    <h2>Livres empruntés</h2>
+    <% borrowedBooks.forEach(book => { %>
+        <div>
+            <h3><%= book.title %></h3>
+            <p>Auteur: <%= book.author %></p>
+            <p>Genre: <%= book.genre %></p>
+            <p>Emprunté</p>
+            <p>Date de retour: <%= book.dueDate %></p>
+        </div>
+    <% }); %>
+
+    <h2>Livres disponibles</h2>
+    <% availableBooks.forEach(book => { %>
+        <div>
+            <h3><%= book.title %></h3>
+            <p>Auteur: <%= book.author %></p>
+            <p>Genre: <%= book.genre %></p>
+            <p>Disponible</p>
+        </div>
+    <% }); %>
+
+    <h2>Livres retournés</h2>
+    <% returnedBooks.forEach(book => { %>
+        <div>
+            <h3><%= book.title %></h3>
+            <p>Auteur: <%= book.author %></p>
+            <p>Genre: <%= book.genre %></p>
+            <p>Retourné</p>
+        </div>
+    <% }); %>
+
+    <h2>Livres non retournés</h2>
+    <% notReturnedBooks.forEach(book => { %>
+        <div>
+            <h3><%= book.title %></h3>
+            <p>Auteur: <%= book.author %></p>
+            <p>Genre: <%= book.genre %></p>
+            <p>Non retourné</p>
+            <p>Date de retour: <%= book.dueDate %></p>
+        </div>
+    <% }); %>
+
+    <h2>Livres supprimés</h2>
+    <% deletedBooks.forEach(book => { %>
+        <div>
+            <h3><%= book.title %></h3>
+            <p>Auteur: <%= book.author %></p>
+            <p>Genre: <%= book.genre %></p>
+            <p>Supprimé</p>
+        </div>
+    <% }); %>
+
+    <h2>Livres non supprimés</h2>
+    <% notDeletedBooks.forEach(book => { %>
+        <div>
+            <h3><%= book.title %></h3>
+            <p>Auteur: <%= book.author %></p>
+            <p>Genre: <%= book.genre %></p>
+            <p>Non supprimé</p>
+        </div>
+    <% }); %>
 </body>
 </html>
