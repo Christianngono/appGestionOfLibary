@@ -150,5 +150,19 @@
     "genre": "Psychologie",
     "borrowed": true,
     "dueDate": "2024-04-09"
+  },
+  {
+    "id": 20,
+    "title": "Book 20",
+    "author": "Auteur 20",
+    "genre": "Documentary",
+    "borrowed": false
+  },
+  {
+    "id": 21,
+    "title": "Book 21",
+    "author": "Auteur 21",
+    "genre": "Love",
+    "borrowed": false
   }
 ]
