@@ -3,48 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Library Management System</title>
-    <link rel="stylesheet" href="../static/app.css">
+    <title>Accueil</title>
+    <link rel="stylesheet" href="/public/static/index.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Library Management System</h1>
-        <form id="optionForm" action="/">
-            <label for="option">Options :</label>
-            <select id="option">
-                <option value="getBooks">Afficher la collection de livres</option>
-                <option value="sortBooks">Trier la collection de livres par titre</option>
-                <option value="addBook">Ajouter un nouveau livre</option>
-                <option value="removeBook">Supprimer un livre de la collection</option>
-                <option value="returnBook">Rendre un livre</option>
-                <option value="borrowBook">Emprunter un livre</option>
-                <option value="getBorrowedBooks">Afficher les livres empruntés</option>
-                <option value="getOverdueBooks">Afficher les livres en retard</option>
-                <option value="getAvailableBooks">Afficher les livres disponibles</option>
-                <option value="searchBook">Rechercher un livre par titre</option>
-                <option value="searchBookByAuthor">Rechercher des livres par auteur</option>
-                <option value="searchBookByGenre">Rechercher des livres par genre</option>
-            </select>
-            <div id="inputFields"></div>
-            <input type="submit" value="Exécuter">
-        </form>
-        <button onclick="displayAllResults()">Afficher tous les résultats</button>
-        <div id="output"></div>
+    <h1><%= page %></h1>
+
+    <div id="books">
+        <% books.forEach(book => { %>
+            <div class="book">
+                <h2><%= book.title %></h2>
+                <p>Auteur: <%= book.author %></p>
+                <p>Genre: <%= book.genre %></p>
+                <p><%= book.borrowed ? 'Emprunté' : 'Disponible' %></p>
+                <p>Date d'échéance: <%= book.dueDate %></p>
+            </div>
+        <% }); %>
     </div>
 
-    <script src="/script/app.js"></script>
-    <script>
-        function displayAllResults() {
-            const output = document.getElementById("output");
-            // Effacer les résultats précédents
-            output.innerHTML = ""; 
-            // Parcourir tous les résultats et afficher chaque résulta
-            allResults.forEach(result => {
-                const resultDiv = document.createElement("div");
-                resultDiv.textContent = JSON.stringify(result, null, 2);
-                output.appendChild(resultDiv);
-            });
-        }
-    </script>
+    <div class="actions">
+        <a href="/addBook">Ajouter un livre</a>
+        <a href="/deleteBook">Supprimer un livre</a>
+        <a href="/borrowBook">Emprunter un livre</a>
+        <a href="/returnBook">Retourner un livre</a>
+    </div>
 </body>
 </html>

@@ -1,0 +1,41 @@
+div {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+/* Styles pour les labels */
+label {
+    width: 150px;
+    font-weight: bold;
+    margin-right: 20px; /* Espace entre le label et le champ de saisie */
+}
+
+/* Styles pour les champs de saisie */
+input[type="text"],
+input[type="number"] {
+    flex-grow: 1; /* Permet au champ de saisie de remplir l'espace disponible */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Styles pour le bouton */
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+}
+
+/* Style pour le lien de retour */
+a {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #007bff;
+}

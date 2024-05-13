@@ -6,7 +6,9 @@
   "dependencies": {
     "ejs": "^3.1.10",
     "express": "^4.19.2",
+    "install": "^0.13.0",
     "nodemon": "^3.1.0",
+    "npm": "^10.7.0",
     "readline-sync": "^1.4.10"
   }
 }
